@@ -10,6 +10,17 @@ df = pd.read_csv("data/Ressources.csv", sep=",")
 df.columns = [col.strip() for col in df.columns]
 
 
+@app.route("/", methods=["GET"])
+def home():
+    return {
+        "message": "API Ressources OK",
+        "endpoints": [
+            "/ressources",
+            "/ressources/<matricule>",
+            "/stats"
+        ]
+    }
+
 # -----------------------------------
 # Endpoint 1 : toutes les ressources
 # -----------------------------------
